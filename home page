@@ -1,0 +1,93 @@
+# security_project-
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Strength Tester</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .password-strength {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .password-strength-weak {
+            color: #dc3545;
+            background-color: #f8d7da;
+        }
+        .password-strength-medium {
+            color: #ffc107;
+            background-color: #fff3cd;
+        }
+        .password-strength-strong {
+            color: #28a745;
+            background-color: #d4edda;
+        }
+        .password-hint {
+            margin-top: 10px;
+            color: #666;
+        }
+    </style>
+    <script src="Constraints.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Strength Tester</h1>
+        <form>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <div class="password-strength" id="password-strength"></div>
+            <div class="password-hint" id="password-hint"></div>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html> 
+
+
+
+
+
