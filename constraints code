@@ -1,0 +1,73 @@
+# security_project-
+window.addEventListener("DOMContentLoaded", (event) => {
+
+    // Get references to the input fields and submit button
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const passwordVerificationInput = document.getElementById('password-verification');
+    const submitButton = document.getElementById('login-btn');
+
+    // Add an event listener to the submit button
+    submitButton.addEventListener('click', function(event) {
+        // Prevent the form from submitting
+        event.preventDefault();
+
+        // Get the values of the input fields
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value;
+        const passwordVerification = passwordVerificationInput.value;
+
+        // Define the password constraints
+        const MIN_PASSWORD_LENGTH = 8;
+        const MAX_PASSWORD_LENGTH = 64;
+        const PASSWORD_COMPLEXITY_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+
+        // Check if the password meets the constraints
+        if (password.length < MIN_PASSWORD_LENGTH) {
+            alert('Password is too short. Please enter a password that is at least ' + MIN_PASSWORD_LENGTH + ' characters long.');
+        } else if (password.length > MAX_PASSWORD_LENGTH) {
+            alert('Password is too long. Please enter a password that is no more than ' + MAX_PASSWORD_LENGTH + ' characters long.');
+        } else if (!PASSWORD_COMPLEXITY_REGEX.test(password)) {
+            alert('Password is not strong enough. Please include at least one lowercase letter, one uppercase letter, one digit, and one special character (@$!%*?&).');
+        } else if (password !== passwordVerification) {
+            alert('Passwords do not match. Please re-enter your password.');
+        } else {
+            // Password meets the basic constraints, perform additional checks
+            const passwordStrength = checkPasswordStrength(password);
+            alert('Password strength: ' + passwordStrength);
+        }
+    });
+
+    function checkPasswordStrength(password) {
+        // Perform additional password strength checks
+
+        // 1. Custom rules check
+
+        // 2. Entropy check
+        const entropy = calculatePasswordEntropy(password);
+        console.log('Password entropy:', entropy);
+
+        // 3. Common passwords check
+
+        // 4. Dictionary password check
+
+        // 5. Brute force check
+
+        // Return a password strength score or classification based on the checks performed
+        return 'Strong'; // Replace this with the actual password strength evaluation
+    }
+
+    function calculatePasswordEntropy(password) {
+        const characterSetSize = getCharacterSetSize(password);
+        const passwordLength = password.length;
+        const entropy = Math.log2(Math.pow(characterSetSize, passwordLength));
+        return entropy;
+    }
+
+    function getCharacterSetSize(password) {
+        // Count the number of unique characters in the password
+        const uniqueCharacters = new Set(password);
+        return uniqueCharacters.size;
+    }
+
+});
